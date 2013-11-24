@@ -29,6 +29,7 @@ class minecraft(
   $manage_curl   = true,
   $heap_size     = 2048,
   $heap_start    = 512,
+  $download_src  = 'MinecraftDownload/launcher/minecraft_server.jar',
 )
 {
   if $manage_java {
@@ -61,7 +62,7 @@ class minecraft(
   }
 
   s3file { "${homedir}/minecraft_server.jar":
-    source  => 'MinecraftDownload/launcher/minecraft_server.jar',
+    source  => $download_src,
     require => User[$user],
   }
 
